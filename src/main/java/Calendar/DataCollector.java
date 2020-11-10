@@ -1,5 +1,9 @@
 package Calendar;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,24 +26,23 @@ import java.net.URL;
 
         StringBuilder result = new StringBuilder();
 
-        URL oracle = null;
+        url += yearBuilder + year + monthBuilder;
+        if (month < 10) {
+            url += "0";
+        }
+
+        Document document = null;
         try {
-            url += yearBuilder + year + monthBuilder;
-            if (month < 10) {
-                url += "0";
-            }
-            oracle = new URL(url + month);
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
-
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-                result.append(inputLine);
-            in.close();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+            document = Jsoup.connect(url + month).get();
         } catch (IOException ioException) {
             ioException.printStackTrace();
+        }
+        Elements elements = document.select("td");
+
+        for (Element element : elements) {
+            if (element.attr("class").equals("active")) {
+                result.append(element);
+            }
         }
 
         return result.toString();
