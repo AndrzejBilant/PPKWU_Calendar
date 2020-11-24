@@ -44,7 +44,6 @@ import java.util.ArrayList;
                 String link = date.attr("href");
                 Elements text = element.getElementsByTag("p");
 
-                System.out.println(link+date.text()+text.text());
                 events.add(new Event(link,date.text(),text.text(),String.valueOf(year), String.valueOf(month)));
 
             }
