@@ -37,7 +37,12 @@ import java.io.IOException;
 
         for (Element element : elements) {
             if (element.attr("class").equals("active")) {
-                result.append(element);
+                Elements date = element.select("a[href]");
+                String link = date.attr("href");
+                Elements text = element.getElementsByTag("p");
+
+                System.out.println(link+date.text()+text.text());
+
             }
         }
 
