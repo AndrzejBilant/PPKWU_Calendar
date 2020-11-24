@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -56,7 +58,19 @@ import java.util.ArrayList;
             result.append(elo);
         }
         result.append("END:VCALENDAR");
+        File file = generateFile(result.toString(),month,year);
         return result.toString();
     }
-
+    public File generateFile(String content, int month,int year){
+        String name = month+year+".ics";
+        File file = new File(name);
+        try {
+            FileWriter fileWriter = new FileWriter(name);
+            fileWriter.write(content);
+            fileWriter.close();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        return file;
+    }
 }
