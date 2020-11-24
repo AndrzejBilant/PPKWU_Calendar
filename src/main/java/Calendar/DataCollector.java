@@ -21,7 +21,9 @@ import java.util.ArrayList;
         String yearBuilder = "rok=";
         String monthBuilder = "&miesiac=";
 
-        StringBuilder result = new StringBuilder();
+        StringBuilder result = new StringBuilder("BEGIN:VCALENDAR\r\n"
+                                                 + "VERSION:2.0\r\n"
+                                                 + "PRODID:-//hacksw/handcal//NONSGML v1.0//EN\r\n");
 
         url += yearBuilder + year + monthBuilder;
         if (month < 10) {
@@ -48,7 +50,13 @@ import java.util.ArrayList;
 
             }
         }
-
+        for(Event e: events)
+        {
+            String elo = e.generateICal();
+            result.append(elo);
+        }
+        result.append("END:VCALENDAR");
         return result.toString();
     }
+
 }
