@@ -39,10 +39,8 @@ import java.util.ArrayList;
             response.setContentType("text/calendar;charset=utf-8");
             IOUtils.copy(inputStream, response.getOutputStream());
             response.flushBuffer();
-        } catch (FileNotFoundException fileNotFoundException) {
+        } catch (IOException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
         }
     }
 
@@ -64,7 +62,7 @@ import java.util.ArrayList;
                 }
                 tempMonth += String.valueOf(month);
                 String tempDay = "";
-                if (Integer.valueOf(date.text()) < 10) {
+                if (Integer.parseInt(date.text()) < 10) {
                     tempDay += "0";
                 }
                 tempDay += date.text();
@@ -95,7 +93,11 @@ import java.util.ArrayList;
     }
 
     public File generateFile(String content, int month, int year) {
-        String name = month + year + ".ics";
+        String name ="";
+        if(month<10){
+            name+="0";
+        }
+        name += String.valueOf(month) + String.valueOf(year) + ".ics";
         File file = new File(name);
         try {
             FileWriter fileWriter = new FileWriter(name);
