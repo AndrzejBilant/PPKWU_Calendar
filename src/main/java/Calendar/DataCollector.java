@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @RestController public class DataCollector {
 
@@ -33,6 +34,8 @@ import java.io.IOException;
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+
+        ArrayList<Event> events = new ArrayList();
         Elements elements = document.select("td");
 
         for (Element element : elements) {
@@ -42,6 +45,7 @@ import java.io.IOException;
                 Elements text = element.getElementsByTag("p");
 
                 System.out.println(link+date.text()+text.text());
+                events.add(new Event(link,date.text(),text.text(),String.valueOf(year), String.valueOf(month)));
 
             }
         }
