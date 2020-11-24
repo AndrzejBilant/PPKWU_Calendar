@@ -46,9 +46,23 @@ import java.util.ArrayList;
             if (element.attr("class").equals("active")) {
                 Elements date = element.select("a[href]");
                 String link = date.attr("href");
+                if(link.contains("javascript:void()")){
+                    link=null;
+                }
                 Elements text = element.getElementsByTag("p");
 
-                events.add(new Event(link,date.text(),text.text(),String.valueOf(year), String.valueOf(month)));
+                String tempMonth ="";
+                if(month < 10){
+                    tempMonth = tempMonth+"0";
+                }
+                tempMonth+=String.valueOf(month);
+                String tempDay = "";
+                if(Integer.valueOf(date.text())<10)
+                {
+                    tempDay+="0";
+                }
+                tempDay+=date.text();
+                events.add(new Event(link,tempDay,text.text(),String.valueOf(year), tempMonth));
 
             }
         }
