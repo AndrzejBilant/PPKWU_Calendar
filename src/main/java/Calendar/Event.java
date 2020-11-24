@@ -17,7 +17,7 @@ class Event
         this.year = year;
         this.month = month;
 
-        this.dtstamp = year+month+date+"T100000Z";
+        this.dtstamp = year+month+date+"T000000Z";
         this.uid = "-1234@example.com";
     }
 
