@@ -23,9 +23,9 @@ After filtering the data String in iCal format, is created, written to file and 
 File is later uploaded.
 
 ## Example .ics file generated for March 2020
-<div>
-<iframe src="/032020.ics" ></iframe>
-</div>
+
+<iframe src="/032020.ics"></iframe>
+
 
 ## Reference documentation
 
