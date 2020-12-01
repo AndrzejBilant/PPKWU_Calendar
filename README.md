@@ -24,7 +24,7 @@ File is later uploaded.
 
 ## Example .ics file generated for March 2020
 
-<iframe src="https://raw.githubusercontent.com/AndrzejBilant/PPKWU_Calendar/master/032020.ics" ></iframe>
+https://andrzejbilant.github.io/PPKWU_Calendar/032020.ics
 
 
 ## Reference documentation
