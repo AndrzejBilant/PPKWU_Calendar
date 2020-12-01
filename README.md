@@ -24,11 +24,11 @@ File is later uploaded.
 
 ## Example .ics file generated for March 2020
 
-https://andrzejbilant.github.io/PPKWU_Calendar/032020.ics
+[Pobierz wygenerowany przykład](https://andrzejbilant.github.io/PPKWU_Calendar/032020.ics)
 
 
 ## Reference documentation
 
-* https://en.wikipedia.org/wiki/ICalendar
-* https://docs.spring.io/spring-boot/docs/2.3.5.RELEASE/maven-plugin/reference/html/
+* [iCalendar](https://en.wikipedia.org/wiki/ICalendar)
+* [Konfiguracja spring boot](https://docs.spring.io/spring-boot/docs/2.3.5.RELEASE/maven-plugin/reference/html/)
 
